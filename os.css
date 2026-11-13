@@ -31,3 +31,34 @@ body {
     position:relative;
 
 }
+
+/*top bar*/
+.topbar {
+    width:100%;
+    height:50px;
+    padding:0 25px;
+
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #f4f4f5;
+    background: #18181B;
+}
+
+/*os logo*/
+.logo{
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+/*system info*/
+.systeminfo{
+    display:flex;
+    align-items: center;
+    gap:20px;
+
+    font-size:14px;
+    color: silver
+}
