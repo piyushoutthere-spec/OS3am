@@ -1,0 +1,33 @@
+/*global styling*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    font-family: 'Inter';
+    overflow:hidden;
+    background: black;
+}
+
+/*main destop*/
+
+.desktop {
+    width:100%;
+    height:100vh;
+    height:100dvh;
+    background-image: url("assets/bg.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat:no-repeat;
+}
+
+/*desktop area*/
+.desktop-area{
+    width:100%;
+    height:100%;
+    position:relative;
+
+}
