@@ -138,3 +138,52 @@ body {
 .dockitems:hover {
     opacity: 0.8;
 }
+
+/*application window*/
+.app-window {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+    width: 500px;
+    height:350px;
+
+    background:#18181B;
+    border: 1px solid #303036;
+
+    color:#f4f4f5;
+    overflow:hidden;
+}
+
+/*window header*/
+.window-header {
+    height:42px;
+    padding:0 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:#202024;
+
+    font-size:14px;
+}
+
+/*close button*/
+.close-window {
+    background:none;
+    border:none;
+
+    color:white;
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+/*window content*/
+
+.window-content {
+    padding:20px;
+    font-size: 14px;
+}
