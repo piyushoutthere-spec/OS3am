@@ -216,3 +216,25 @@ body {
 .app-window {
     z-index:1;
 }
+
+.notes-editor {
+    width:100%;
+    height:250px;
+    padding: 12px;
+    background:#202024;
+    color:white;
+    border: 1px solid #303036;
+    outline:none;
+    font-family:inherit;
+    font-size:14px;
+}
+
+.notes-editor:focus {
+    border-color: #71717A;
+}
+
+.notes-status {
+    margin-top: 10px;
+    color: #A1A1AA;
+    font-size:12px;
+}

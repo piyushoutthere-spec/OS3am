@@ -76,6 +76,17 @@ function openWindow(appName) {
     windowelement.className = "app-window";
     windowelement.dataset.window = appName;
 
+    //display different content for each application
+    const appcontent = appName === "Notes"
+    ? `
+    <textarea class="notes-editor" placeholder="start writing..."></textarea>
+    <p class="notes-status">Your notes are saved dw</p>
+    `
+    : `
+    <h2>${appName}</h2>
+    <p>Welcome to SHADOW OS ${appName}.</p>
+    `;
+
     windowelement.innerHTML = `
     <div class="window-header">
      <span>${appName}</span>
@@ -85,15 +96,24 @@ function openWindow(appName) {
      </div>
     </div>
     
-    <div class="window-content"
-    <h2>${appName}</h2>
-    <p>Welcome to SHADOW OS ${appName}.</p>
+    <div class="window-content">
+    ${appcontent}
     </div>
     `;
 
     windowContainer.appendChild(windowelement);
     makedraggable(windowelement);
     bringtofront(windowelement);
+
+    // load n save notes
+    if (appName === "Notes") {
+        const noteseditor = windowelement.querySelector(".notes-editor");
+        noteseditor.value = localStorage.getItem("shadow-notes") || "";
+
+        noteseditor.addEventListener("input",function () {
+            localStorage.setItem("shadow-notes",noteseditor.value);
+        });
+    }
 }
 
 // make windows draggable
