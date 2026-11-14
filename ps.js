@@ -77,4 +77,36 @@ function openWindow(appName) {
     `;
 
     windowContainer.appendChild(windowelement);
+    makedraggable(windowelement);
+}
+
+// make windows draggable
+function makedraggable(windowelement) {
+    const header= windowelement.querySelector(".window-header");
+
+    header.addEventListener("mousedown", function (e) {
+        if (e.target.closest("button")) return;
+        const rect= windowelement.getBoundingClientRect();
+
+        const offsetX = e.clientX - rect.left;
+        const offsetY = e.clientY - rect.top;
+
+        // switch from centered to movable
+        windowelement.style.transform = "none";
+        windowelement.style.left = rect.left + "px";
+        windowelement.style.top = rect.top + "px";
+
+        function movewindow(e) {
+            windowelement.style.left = (e.clientX - offsetX) + "px";
+            windowelement.style.top = (e.clientY - offsetY) + "px";
+        }
+
+        function stopdrag() {
+            document.removeEventListener("mousemove",movewindow);
+            document.removeEventListener("mouseup",stopdrag);
+        }
+
+        document.addEventListener("mousemove",movewindow);
+        document.addEventListener("mouseup",stopdrag);
+    });
 }

@@ -168,6 +168,12 @@ body {
     background:#202024;
 
     font-size:14px;
+    cursor:grab;
+    user-select: none;
+}
+
+.window-header:active {
+    cursor: grabbing;
 }
 
 /*close button*/
