@@ -7,7 +7,7 @@ function updateClock(){
         month:"long"
     });
 
-    const time = now.toLocaleDateString("en-US", {
+    const time = now.toLocaleTimeString("en-US", {
         hour:"2-digit",
         minute: "2-digit",
         hour12: "true"
@@ -25,10 +25,17 @@ const windowContainer = document.getElementById("window-container");
 
 //open application windows
 document.addEventListener("click", function (e) {
-    const app = e.target.closest("[dataapp]");
+    const app = e.target.closest("[data-app]");
 
     if(app) {
         openWindow(app.dataset.app);
+    }
+
+    //minimise window
+    const minimisebutton= e.target.closest(".minimize-window");
+
+    if(minimisebutton) {
+        minimisebutton.closest(".app-window").style.display = "none";
     }
 
     // close application window
@@ -44,7 +51,10 @@ function openWindow(appName) {
         `.app-window[data-window="${appName}"]`
     );
 
-    if (existingwindow) return;
+    if (existingwindow) {
+        existingwindow.style.display = "block";
+        return;
+    }
 
     const windowelement = document.createElement("div");
 
@@ -53,8 +63,11 @@ function openWindow(appName) {
 
     windowelement.innerHTML = `
     <div class="window-header">
-    <span>${appName}</span>
-    <button class="close-window">&times;</button>
+     <span>${appName}</span>
+     <div class="window-controls">
+     <button class="minimize-window">-</button>
+     <button class="close-window">&times;</button>
+     </div>
     </div>
     
     <div class="window-content"
