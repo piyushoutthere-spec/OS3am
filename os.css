@@ -154,6 +154,9 @@ body {
 
     color:#f4f4f5;
     overflow:hidden;
+    resize:both;
+    min-width:300px;
+    min-height:200px;
 }
 
 /*window header*/
