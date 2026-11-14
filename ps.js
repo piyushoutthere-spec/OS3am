@@ -87,7 +87,35 @@ function openWindow(appName) {
     <button class="new-file">+ Add file</button>
     <div class="file-list"></div>
     `
-    : `
+    :appName === "Calculator"
+    ?` 
+    <div class="calsy">
+    <input class="calc-display" value="0" readonly>
+
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button>/</button>
+
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>*</button>
+
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>-</button>
+
+    <button>0</button>
+    <button>.</button>
+    <button class="clear">C</button>
+    <button>+</button>
+
+    <button class="equal">=</button>
+    </div>`
+    :`
+    
     <h2>${appName}</h2>
     <p>Welcome to SHADOW OS ${appName}.</p>
     `;
@@ -104,7 +132,8 @@ function openWindow(appName) {
     <div class="window-content">
     ${appcontent}
     </div>
-    `;
+    `;    
+
 
     windowContainer.appendChild(windowelement);
     makedraggable(windowelement);
@@ -158,6 +187,35 @@ function openWindow(appName) {
             }
         };
         showfiles();
+    }
+    // calsy app
+    if (appName === "Calculator") {
+        const display = windowelement.querySelector(".calc-display");
+        const btns = windowelement.querySelectorAll(".calsy button");
+
+        let exp = "";
+
+        btns.forEach(button => {
+            button.onclick = () => {
+                if (button.classList.contains("clear")){
+                    exp = "";
+                    display.value = "0";
+                }
+                else if (button.classList.contains("equal")) {
+                    try {
+                        exp = String(eval(exp));
+                        display.value = exp;
+                    } catch {
+                        display.value="Error";
+                        exp= "";
+                    }
+                }
+                else{
+                    exp += button.textContent;
+                    display.value = exp;
+                }
+            };
+        });
     }
 }
 

@@ -260,3 +260,33 @@ body {
     padding:7px;
     cursor:pointer;
 }
+
+/*calsy*/
+.calsy {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:4px;
+}
+
+.calsy input{
+    grid-column: span 4;
+    padding: 12px;
+    background:#202024;
+    color:white;
+    border: 1px solid #303036;
+    font-size: 20px;
+    text-align:right;
+}
+
+.calsy button {
+    padding: 12px;
+    background: #303036;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.calsy button:hover {
+    background: gray;
+}
