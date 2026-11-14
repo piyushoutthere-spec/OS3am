@@ -82,6 +82,11 @@ function openWindow(appName) {
     <textarea class="notes-editor" placeholder="start writing..."></textarea>
     <p class="notes-status">Your notes are saved dw</p>
     `
+    :appName === "Files"
+    ? `
+    <button class="new-file">+ Add file</button>
+    <div class="file-list"></div>
+    `
     : `
     <h2>${appName}</h2>
     <p>Welcome to SHADOW OS ${appName}.</p>
@@ -113,6 +118,46 @@ function openWindow(appName) {
         noteseditor.addEventListener("input",function () {
             localStorage.setItem("shadow-notes",noteseditor.value);
         });
+    }
+
+    // files app
+    if (appName === "Files") {
+        const filelist = windowelement.querySelector(".file-list");
+        const addbtn = windowelement.querySelector(".new-file");
+
+        let files = JSON.parse(localStorage.getItem("shadow-files")) || [];
+
+        function showfiles(){
+            filelist.innerHTML = "";
+
+            files.forEach((file,index) => {
+                filelist.innerHTML += `
+                <div class="file-item">
+                ${file}
+                <button class="delete-file" data-index="${index}">x</button>
+                </div>
+                `;
+            });
+        }
+
+        addbtn.onclick = () => {
+            const name= prompt("Enter file name:");
+
+            if(name) {
+                files.push(name);
+                localStorage.setItem("shadow-files",JSON.stringify(files));
+                showfiles();
+            }
+        };
+
+        filelist.onclick = (e) => {
+            if (e.target.classList.contains("delete-file")) {
+                files.splice(e.target.dataset.index,1);
+                localStorage.setItem("shadow-files",JSON.stringify(files));
+                showfiles();
+            }
+        };
+        showfiles();
     }
 }
 

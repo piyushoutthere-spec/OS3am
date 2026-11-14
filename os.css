@@ -238,3 +238,25 @@ body {
     color: #A1A1AA;
     font-size:12px;
 }
+
+.file-list {
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.file-item {
+    display:flex;
+    justify-content: space-between;
+    padding:10px;
+    background: #202024;
+    color:white;
+}
+
+.new-file, .delete-file {
+    background:#303036;
+    color:white;
+    border:none;
+    padding:7px;
+    cursor:pointer;
+}
