@@ -122,6 +122,21 @@ function openWindow(appName) {
     <input class="terminal-input" placeholder="Type a command...">
     </div>
     `
+
+    :appName === "Settings"
+    ? `
+    <div class="settings">
+    <h2>Appearance</h2>
+    <p>Choose your accent colour</p>
+
+    <button class="theme-purple">Purple</button>
+    <button class="theme-blue">Blue</button>
+
+    <h2>System Information</h2>
+    <p>SHADOW OS</p>
+    <p>Version 1.0</p>
+    </div>
+    `
     :`
     
     
@@ -269,6 +284,26 @@ function openWindow(appName) {
                 input.value = "";
             }
         });
+    }
+
+    //settings app
+    if (appName === "Settings") {
+        const purple = windowelement.querySelector(".theme-purple");
+        const blue = windowelement.querySelector(".theme-blue");
+
+        function changetheme(color) {
+            document.documentElement.style.setProperty("--accent-color",color);
+            localStorage.setItem("shadow-theme",color);
+        }
+
+        purple.onclick = () => changetheme("#8B5CF6");
+        blue.onclick = () => changetheme("#3B82f6");
+
+        const savedtheme = localStorage.getItem("shadow-theme");
+
+        if (savedtheme) {
+            changetheme(savedtheme);
+        }
     }
 }
 
