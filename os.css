@@ -62,3 +62,40 @@ body {
     font-size:14px;
     color: silver
 }
+
+/*desktop layout*/
+
+.desktopicons {
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+    gap:25px;
+    padding:30px;
+}
+
+/*individual application icon*/
+
+.appicon{
+    width:75px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+
+    color:white;
+    font-size:12px;
+
+    cursor:pointer;
+}
+
+/*Images*/
+
+.appicon img {
+    width:40px;
+    height:40px;
+    object-fit: contain;
+}
+
+.appicon:hover {
+    opacity:0.75;
+}
