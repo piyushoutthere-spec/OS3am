@@ -99,3 +99,42 @@ body {
 .appicon:hover {
     opacity:0.75;
 }
+
+/*bottom dock*/
+.dock {
+    position:absolute;
+    bottom:18px;
+    left:50%;
+    transform: translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:12px 18px;
+
+    background: #18181B;
+    border: 1px solid #303036;
+    border-radius:15px;
+}  
+
+/*individual dock items*/
+.dockitems{
+    width: 45px;
+    height: 45px;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor:pointer;
+}
+
+.dockitems img{
+    width:30px;
+    height:30px;
+}
+
+.dockitems:hover {
+    opacity: 0.8;
+}
