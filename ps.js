@@ -114,7 +114,16 @@ function openWindow(appName) {
 
     <button class="equal">=</button>
     </div>`
+
+    :appName === "Terminal"
+    ? `
+    <div class="terminal">
+    <div class="terminal-output"></div>
+    <input class="terminal-input" placeholder="Type a command...">
+    </div>
+    `
     :`
+    
     
     <h2>${appName}</h2>
     <p>Welcome to SHADOW OS ${appName}.</p>
@@ -215,6 +224,50 @@ function openWindow(appName) {
                     display.value = exp;
                 }
             };
+        });
+    }
+    // terminal app
+    if (appName === "Terminal") {
+        const input = windowelement.querySelector(".terminal-input");
+        const output = windowelement.querySelector(".terminal-output");
+
+        input.addEventListener("keydown",function (e) {
+            if (e.key === "Enter") {
+                const command = input.value.trim().toLowerCase();
+
+                if (!command) return;
+
+                const line = document.createElement("p");
+                line.textContent="guest@shadow-os:~$" + command;
+                output.appendChild(line);
+
+                let response = "";
+
+                if (command==="help") {
+                    response = "Commands:help,date,whoami,about,clear";
+                }
+                else if (command==="date") {
+                    response = new Date().toString();
+                }
+                else if (command==="whoami") {
+                    response="Guest";
+                }
+                else if (command==="about") {
+                    response = "Welcome to SHADOW OS Terminal";
+                }
+                else if (command==="clear") {
+                    output.innerHTML= "";
+                }
+                else {
+                    response= "Command not found";
+                }
+                if (response) {
+                    const result = document.createElement("p");
+                    result.textContent = response;
+                    output.appendChild(result);
+                }
+                input.value = "";
+            }
         });
     }
 }

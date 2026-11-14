@@ -290,3 +290,26 @@ body {
 .calsy button:hover {
     background: gray;
 }
+
+.terminal {
+    background: black;
+    padding:12px;
+    height:250px;
+    color:white;
+    font-family: monospace;
+}
+
+.terminal-output {
+    height:200px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.terminal-input {
+    width:100%;
+    padding: 8px;
+    background: transparent;
+    border:none;
+    color:white;
+    font-family:monospace;
+}
