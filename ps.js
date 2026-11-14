@@ -23,8 +23,22 @@ setInterval(updateClock,1000);
 // application window management 
 const windowContainer = document.getElementById("window-container");
 
+//track which window would come first
+let highestwindow = 1;
+
+//bring window first
+function bringtofront(windowelement) {
+    highestwindow++;
+    windowelement.style.zIndex = highestwindow;
+}
+
 //open application windows
 document.addEventListener("click", function (e) {
+    const clickedwindow = e.target.closest(".app-window");
+
+    if (clickedwindow) {
+        bringtofront(clickedwindow);
+    }
     const app = e.target.closest("[data-app]");
 
     if(app) {
@@ -53,6 +67,7 @@ function openWindow(appName) {
 
     if (existingwindow) {
         existingwindow.style.display = "block";
+        bringtofront(existingwindow);
         return;
     }
 
@@ -78,6 +93,7 @@ function openWindow(appName) {
 
     windowContainer.appendChild(windowelement);
     makedraggable(windowelement);
+    bringtofront(windowelement);
 }
 
 // make windows draggable

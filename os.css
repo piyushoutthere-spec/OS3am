@@ -209,3 +209,7 @@ body {
     display:flex;
     align-items: center;
 }
+
+.app-window {
+    z-index:1;
+}
